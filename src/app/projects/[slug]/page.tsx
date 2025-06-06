@@ -1,18 +1,19 @@
-import { notFound } from 'next/navigation';
-import { projects, getProjectBySlug } from '@/data/projects';
+import { notFound } from 'next/navigation'
+import { projects, getProjectBySlug } from '@/data/projects'
 
-// 1️⃣  Tell Next what slugs exist so it can prerender them
 export async function generateStaticParams() {
-  return projects.map(({ slug }) => ({ slug }));
+  return projects.map(({ slug }) => ({ slug }))
 }
 
 interface PageProps {
-  params: { slug: string };
+  params: { slug: string }
 }
 
-export default function ProjectDetailPage({ params }: PageProps) {
-  const project = getProjectBySlug(params.slug);
-  if (!project) notFound();
+export default async function ProjectDetailPage({ params }: PageProps) {
+  const { slug } = await params
+
+  const project = getProjectBySlug(slug)
+  if (!project) notFound()
 
   return (
     <section className="space-y-4">
@@ -35,6 +36,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
           <a
             href={project.github}
             target="_blank"
+            rel="noopener noreferrer"
             className="text-blue-600 underline"
           >
             GitHub
@@ -44,6 +46,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
           <a
             href={project.demo}
             target="_blank"
+            rel="noopener noreferrer"
             className="text-green-600 underline"
           >
             Live Demo
@@ -51,5 +54,5 @@ export default function ProjectDetailPage({ params }: PageProps) {
         )}
       </div>
     </section>
-  );
+  )
 }
