@@ -1,93 +1,114 @@
-import Layout from '@/components/Layout'
-import { ExternalLink, Github } from 'lucide-react'
+import Layout from '@/components/Layout';
+import { ExternalLink, Github } from 'lucide-react';
+import { getAllProjects } from '@/lib/projects';
+import ProjectSlideshow from '@/components/ProjectSlideshow';
 
 export default function Projects() {
-  const projects = [
-    {
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce solution built with Next.js, featuring user authentication, payment integration, and admin dashboard.',
-      technologies: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL'],
-      githubUrl: '#',
-      liveUrl: '#',
-      image: '/api/placeholder/600/400'
-    },
-    {
-      title: 'Task Management App',
-      description: 'A collaborative task management application with real-time updates, team collaboration features, and project tracking.',
-      technologies: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
-      githubUrl: '#',
-      liveUrl: '#',
-      image: '/api/placeholder/600/400'
-    },
-    {
-      title: 'Weather Dashboard',
-      description: 'A responsive weather dashboard that provides current weather conditions and forecasts with beautiful visualizations.',
-      technologies: ['Vue.js', 'Chart.js', 'OpenWeather API'],
-      githubUrl: '#',
-      liveUrl: '#',
-      image: '/api/placeholder/600/400'
-    }
-  ]
+  const projects = getAllProjects();
 
   return (
     <Layout>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20'>
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            My Projects
+        <div className='text-center mb-24'>
+          <h1 className='text-6xl sm:text-7xl font-bold text-white mb-8'>
+            <span className='bg-gradient-to-r from-primary-400 to-purple-500 bg-clip-text text-transparent'>
+              Projects
+            </span>
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            A collection of projects I've worked on, showcasing my skills and passion for development
+          <p className='text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed'>
+            A collection of projects I've worked on from scratch or contributed.
           </p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        {/* Projects List */}
+        <div className='space-y-32'>
           {projects.map((project, index) => (
             <div
-              key={index}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+              key={project.id}
+              className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-20 min-h-[70vh]`}
             >
-              <div className="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                <span className="text-gray-500 dark:text-gray-400">Project Image</span>
-              </div>
-              
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  {project.title}
-                </h3>
-                
-                <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                  {project.description}
-                </p>
+              {/* Project Visual */}
+              <div className='w-full lg:w-1/2 flex-shrink-0'>
+                <div className='relative group'>
+                  {/* Floating background effect */}
+                  <div className='absolute -inset-4 bg-gradient-to-r from-primary-400/20 to-purple-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500'></div>
 
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.technologies.map((tech) => (
+                  {/* Main image container with slideshow */}
+                  <div className='relative bg-gray-900/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-800/50 group-hover:border-primary-400/50 transition-all duration-500 shadow-2xl'>
+                    <ProjectSlideshow images={project.images} title={project.title} />
+
+                    {/* Overlay on hover - only show if liveUrl exists */}
+                    {project.liveUrl && (
+                      <div className='absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center'>
+                        <a
+                          href={project.liveUrl}
+                          target='_blank'
+                          rel='noopener noreferrer'
+                          className='inline-flex items-center space-x-2 px-6 py-3 bg-primary-400 text-black rounded-lg font-medium hover:bg-primary-500 transition-colors'
+                        >
+                          <ExternalLink size={20} />
+                          <span>View Live</span>
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Project Details */}
+              <div className='w-full lg:w-1/2 flex flex-col justify-center space-y-6'>
+                {/* Category */}
+                {project.category && (
+                  <div className='inline-flex items-center'>
+                    <span className='px-4 py-2 bg-primary-400/10 text-primary-400 rounded-full text-sm font-medium border border-primary-400/20'>
+                      {project.category}
+                    </span>
+                  </div>
+                )}
+
+                {/* Title */}
+                <h3 className='text-4xl sm:text-5xl font-bold text-white leading-tight'>{project.title}</h3>
+
+                {/* Description */}
+                <p className='text-xl text-gray-300 leading-relaxed'>{project.description}</p>
+
+                {/* Technologies */}
+                <div className='flex flex-wrap gap-3'>
+                  {project.technologies.map(tech => (
                     <span
                       key={tech}
-                      className="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-sm"
+                      className='px-4 py-2 bg-gray-800/50 text-gray-300 rounded-lg text-sm font-medium border border-gray-700/50 hover:border-primary-400/50 hover:text-primary-400 transition-all duration-300'
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex space-x-4">
-                  <a
-                    href={project.githubUrl}
-                    className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-                  >
-                    <Github size={20} />
-                    <span>Code</span>
-                  </a>
-                  <a
-                    href={project.liveUrl}
-                    className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-                  >
-                    <ExternalLink size={20} />
-                    <span>Live Demo</span>
-                  </a>
+                {/* Action Links */}
+                <div className='flex flex-col sm:flex-row gap-4 pt-4'>
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='inline-flex items-center justify-center space-x-3 px-8 py-4 bg-primary-400 text-black rounded-lg font-semibold text-lg hover:bg-primary-500 transition-all duration-300 hover:scale-105'
+                    >
+                      <ExternalLink size={24} />
+                      <span>LIVE APP</span>
+                    </a>
+                  )}
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='inline-flex items-center justify-center space-x-3 px-8 py-4 border-2 border-primary-400 text-primary-400 rounded-lg font-semibold text-lg hover:bg-primary-400 hover:text-black transition-all duration-300'
+                    >
+                      <Github size={24} />
+                      <span>LEARN MORE</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
@@ -95,21 +116,19 @@ export default function Projects() {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center">
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-            Want to see more of my work?
-          </p>
+        <div className='text-center mt-32'>
+          <p className='text-2xl text-gray-300 mb-8'>Want to see more of my work?</p>
           <a
-            href="https://github.com/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center space-x-2 px-8 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-transparent hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+            href='https://github.com/HaiderWain'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='inline-flex items-center space-x-3 px-10 py-4 border-2 border-purple-500 text-purple-500 rounded-lg font-semibold text-lg hover:bg-purple-500 hover:text-black transition-all duration-300'
           >
-            <Github size={20} />
+            <Github size={24} />
             <span>View on GitHub</span>
           </a>
         </div>
       </div>
     </Layout>
-  )
+  );
 }

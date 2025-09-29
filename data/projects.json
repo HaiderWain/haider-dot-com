@@ -1,0 +1,61 @@
+[
+  {
+    "id": "Dissertation",
+    "title": "Large Language Models in Information Retrieval",
+    "description": "Using LLMs in a modular end-to-end Information Retrieval pipeline (rewrite → retrieve → rerank → evaluate) to improve retrieval performance (nDCG@K, MRR@K, Recall@K, P@K).",
+    "technologies": ["Ollama Models", "BM25", "Sentence Transformers (all-MiniLM-L6-v2)", "Crossencoders", "Faiss-gpu", "Socket.io", "AWS S3"],
+    "githubUrl": "https://github.com/HaiderWain/llm-ir",
+    "liveUrl": "",
+    "images": [
+      "/images/projects/LLM-ir-1.png",
+      "/images/projects/LLM-ir-2.png",
+      "/images/projects/LLM-ir-3.png"
+    ],
+    "category": "Full Stack",
+    "featured": true,
+    "date": "2025-01-15"
+  },
+  {
+    "id": "Dastgyr",
+    "title": "Dastgyr.com",
+    "description": "Dastgyr is a large-scale B2B e-commerce platform connecting buyers and sellers across emerging markets. My role as a Software Engineer was to build new features and services from scratch that to solve complex real time problems that impacted thousands of users. I led the migration of core services to a modern microservice architecture, introduced a reward and incentive system that boosted engagement, and improved how sellers and buyers interact with the platform. Along the way, I built scalable services using NestJS, TypeScript, Kafka, PostgreSQL, and MongoDB to power a seamless and high performance marketplace experience.",
+    "technologies": ["TypeScript", "NestJS", "Next.js", "Kafka", "PostgreSQL", "MongoDB", "Jest", "Microservices"],
+    "githubUrl": "",
+    "liveUrl": "https://dastgyr.com/",
+    "images": [
+      "/images/projects/dastgyr-1.jpg",
+      "/images/projects/dastgyr-2.png"
+    ],
+    "category": "Full Stack",
+    "featured": true,
+    "date": "2023-11-10"
+  },
+  {
+    "id": "Kisaan",
+    "title": "Kisaan",
+    "description": "Kisaan helps uplift rural communities by building digital solutions that improve agriculture, supply chains, and financial inclusion. As a Senior Software Engineer, I worked on building scalable backend services and modernizing core systems that power features like new user onboarding and order processing. I focused heavily on observability and monitoring, integrating OpenTelemetry and Sentry to collect rich metrics, track application health, and resolve issues faster improving reliability and developer productivity. I also automated development workflows with ESLint, Prettier, and Husky to enforce code quality and streamline deployment processes.",
+    "technologies": ["TypeScript", "NestJS", "Next.js", "PostgreSQL", "OpenTelemetry", "Sentry", "Docker", "Microservices"],
+    "githubUrl": "",
+    "liveUrl": "https://kisaangroup.pk/",
+    "images": [
+      "/images/projects/Kisaan-1.png"
+    ],
+    "category": "Full Stack",
+    "featured": false,
+    "date": "2023-09-05"
+  },
+  {
+    "id": "GrocerApp",
+    "title": "GrocerApp",
+    "description": "GrocerApp is a local e-commerce platform, making grocery shopping simple and seamless. At GrocerApp, I helped improve the platform’s customer support experience by integrating automation tools like Zendesk, cutting live chat resolution time by 80%. I also built features that enhanced customer engagement and retention, including personalized order recommendations and gamification-driven loyalty elements. My work focused on delivering a smoother, more responsive user experience while scaling the platform’s backend with Node.js and React.",
+    "technologies": ["JavaScript,", "Node.js", "React", "PostgreSQL"],
+    "githubUrl": "",
+    "liveUrl": "https://grocerapp.pk/",
+    "images": [
+      "/images/projects/Grocerapp-1.png"
+    ],
+    "category": "Full Stack",
+    "featured": false,
+    "date": "2023-09-05"
+  }
+]
