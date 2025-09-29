@@ -17,7 +17,7 @@ export default function Projects() {
             </span>
           </h1>
           <p className='text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed'>
-            A collection of projects I've worked on from scratch or contributed.
+            A collection of projects I&apos;ve worked on from scratch or contributed.
           </p>
         </div>
 

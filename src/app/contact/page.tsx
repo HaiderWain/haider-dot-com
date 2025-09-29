@@ -56,14 +56,14 @@ export default function Contact() {
         <div className='text-center mb-16'>
           <h1 className='text-5xl sm:text-6xl font-bold text-white mb-6'>Get In Touch</h1>
           <p className='text-2xl text-gray-300 max-w-2xl mx-auto'>
-            Have a project in mind or just want to chat? I'd love to hear from you.
+            Have a project in mind or just want to chat? I&apos;d love to hear from you.
           </p>
         </div>
 
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-12'>
           {/* Contact Information */}
           <div>
-            <h2 className='text-3xl font-semibold text-white mb-8'>Let's Connect</h2>
+            <h2 className='text-3xl font-semibold text-white mb-8'>Let&apos;s Connect</h2>
 
             <div className='space-y-6'>
               <div className='flex items-center space-x-4'>
@@ -111,8 +111,8 @@ export default function Contact() {
 
             <div className='mt-8'>
               <p className='text-gray-300 leading-relaxed'>
-                I'm always interested in new opportunities and exciting projects. Whether you have a question, want to
-                collaborate, or just want to say hi, feel free to reach out!
+                I&apos;m always interested in new opportunities and exciting projects. Whether you have a question, want
+                to collaborate, or just want to say hi, feel free to reach out!
               </p>
             </div>
           </div>

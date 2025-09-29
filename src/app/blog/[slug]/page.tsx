@@ -59,7 +59,8 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
           <div className='bg-gray-50 dark:bg-gray-800 rounded-lg p-8 text-center'>
             <p className='text-gray-600 dark:text-gray-400 mb-4'>Comments feature coming soon!</p>
             <p className='text-sm text-gray-500 dark:text-gray-500'>
-              We're working on adding a comments system where you can share your thoughts and engage with other readers.
+              We&apos;re working on adding a comments system where you can share your thoughts and engage with other
+              readers.
             </p>
           </div>
         </section>

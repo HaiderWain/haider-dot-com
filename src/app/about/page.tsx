@@ -17,13 +17,13 @@ export default function About() {
             <h2 className='text-3xl font-semibold text-white mb-6'>My Story</h2>
             <div className='space-y-4 text-gray-300 leading-relaxed text-lg'>
               <p>
-                I'm a full-stack developer who loves building impactful web applications that solve real-world problems.
-                With over 3+ years of experience in modern JavaScript frameworks and full-stack development, I have
-                created solutions that are both powerful and user-friendly.
+                I&apos;m a full-stack developer who loves building impactful web applications that solve real-world
+                problems. With over 3+ years of experience in modern JavaScript frameworks and full-stack development, I
+                have created solutions that are both powerful and user-friendly.
               </p>
               <p>
-                After completing my Bachelor's degree in Computer Science in 2021, I spent over 3 years working as a
-                software developer, almost always in fast moving startup environments where they allowed me to have a
+                After completing my Bachelor&apos;s degree in Computer Science in 2021, I spent over 3 years working as
+                a software developer, almost always in fast moving startup environments where they allowed me to have a
                 direct impact, take ownership of products from idea to deployment, and grow quickly by solving real
                 challenges across the entire stack.
               </p>

@@ -13,7 +13,7 @@ export default function Home() {
       <section className='min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8'>
         <div className='max-w-4xl mx-auto text-center'>
           <h1 className='text-5xl sm:text-7xl lg:text-8xl font-bold text-white mb-8'>
-            Hello, I'm{' '}
+            Hello, I&apos;m{' '}
             <span className='bg-gradient-to-r from-primary-400 to-purple-500 bg-clip-text text-transparent'>
               Haider
             </span>
@@ -99,7 +99,7 @@ export default function Home() {
 
             <div className='text-center'>
               <h3 className='text-2xl font-semibold text-white mb-4'>Get In Touch</h3>
-              <p className='text-gray-400 mb-6'>Let's discuss your next project</p>
+              <p className='text-gray-400 mb-6'>Let&apos;s discuss your next project</p>
               <a
                 href='/contact'
                 className='text-primary-400 hover:text-primary-300 hover:underline font-medium text-lg'

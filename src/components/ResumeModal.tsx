@@ -1,6 +1,7 @@
 'use client';
 
 import { X, Download, Eye } from 'lucide-react';
+import Image from 'next/image';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -52,7 +53,7 @@ const ResumeModal = ({ isOpen, onClose }: ResumeModalProps) => {
           {/* Resume Image Preview */}
           <div className='flex justify-center mb-6'>
             <div className='bg-white rounded-lg overflow-hidden shadow-lg max-w-2xl w-full'>
-              <img
+              <Image
                 src='/resume.webp'
                 alt='Haider Wain Resume'
                 className='w-full h-auto max-h-[750px] object-contain'
