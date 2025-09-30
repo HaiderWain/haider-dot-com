@@ -2,7 +2,7 @@
 
 import Layout from '@/components/Layout';
 import ResumeModal from '@/components/ResumeModal';
-import { Github, Linkedin, Mail, Code, Database, Globe, Users, ChevronDown, ExternalLink } from 'lucide-react';
+import { Github, Linkedin, Mail, ChevronDown, ExternalLink } from 'lucide-react';
 import {
   SiJavascript,
   SiTypescript,

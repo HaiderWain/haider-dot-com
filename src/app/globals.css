@@ -110,70 +110,6 @@ body {
   }
 }
 
-@keyframes typewriter {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
-@keyframes blink-caret {
-  0%,
-  50% {
-    border-color: transparent;
-  }
-  51%,
-  100% {
-    border-color: currentColor;
-  }
-}
-
-@keyframes glitch {
-  0%,
-  100% {
-    transform: translate(0);
-    filter: hue-rotate(0deg);
-  }
-  10% {
-    transform: translate(-2px, 2px);
-    filter: hue-rotate(90deg);
-  }
-  20% {
-    transform: translate(-2px, -2px);
-    filter: hue-rotate(180deg);
-  }
-  30% {
-    transform: translate(2px, 2px);
-    filter: hue-rotate(270deg);
-  }
-  40% {
-    transform: translate(2px, -2px);
-    filter: hue-rotate(360deg);
-  }
-  50% {
-    transform: translate(-2px, 2px);
-    filter: hue-rotate(90deg);
-  }
-  60% {
-    transform: translate(-2px, -2px);
-    filter: hue-rotate(180deg);
-  }
-  70% {
-    transform: translate(2px, 2px);
-    filter: hue-rotate(270deg);
-  }
-  80% {
-    transform: translate(-2px, -2px);
-    filter: hue-rotate(360deg);
-  }
-  90% {
-    transform: translate(2px, 2px);
-    filter: hue-rotate(90deg);
-  }
-}
-
 .animate-fade-in-up {
   animation: fade-in-up 0.8s ease-out forwards;
   opacity: 0;
@@ -182,22 +118,6 @@ body {
 .animate-gradient-x {
   animation: gradient-x 2s ease-in-out infinite;
   background-size: 200% 200%;
-}
-
-.animate-typewriter {
-  animation: typewriter 2s steps(20, end) forwards;
-  overflow: hidden;
-  border-right: 2px solid;
-  white-space: nowrap;
-  width: 0;
-}
-
-.animate-blink-caret {
-  animation: blink-caret 1s step-end infinite;
-}
-
-.animate-glitch {
-  animation: glitch 0.3s ease-in-out;
 }
 
 .delay-100 {
@@ -210,38 +130,4 @@ body {
 
 .delay-300 {
   animation-delay: 0.3s;
-}
-
-.delay-500 {
-  animation-delay: 0.5s;
-}
-
-.delay-700 {
-  animation-delay: 0.7s;
-}
-
-.delay-1000 {
-  animation-delay: 1s;
-}
-
-@keyframes bounce-in {
-  0% {
-    opacity: 0;
-    transform: scale(0.3) translateY(-50px);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05) translateY(0);
-  }
-  70% {
-    transform: scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.animate-bounce-in {
-  animation: bounce-in 1s ease-out forwards;
 }
