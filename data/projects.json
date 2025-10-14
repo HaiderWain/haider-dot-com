@@ -47,7 +47,7 @@
     "id": "GrocerApp",
     "title": "GrocerApp",
     "description": "A local e-commerce platform bult with Node.js, React, PostgreSQL. Revamped the platform’s customer support experience by integrating Zendesk, reducing live chat resolution time by 80%. Built features that enhanced customer engagement and retention, including personalized order recommendations and gamification-driven loyalty elements.",
-    "technologies": ["JavaScript,", "Node.js", "React", "PostgreSQL", "AWS S3"],
+    "technologies": ["PHP", "Laravel", "JavaScript,", "Node.js", "React", "PostgreSQL", "AWS S3"],
     "githubUrl": "",
     "liveUrl": "https://grocerapp.pk/",
     "images": [
