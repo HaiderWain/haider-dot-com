@@ -1,9 +1,44 @@
 [
   {
+    "id": "ManorCarpets",
+    "title": "Manor Carpets UK",
+    "description": "A UK Based flooring company that sells a wide range of carpets, rugs, and flooring products. I was responsible for building the website from scratch using Next.js, and TypeScript.",
+    "technologies": [
+      "TypeScript",
+      "NestJS",
+      "Next.js",
+      "Kafka",
+      "PostgreSQL",
+      "MongoDB",
+      "Jest",
+      "Microservices",
+      "OpenTelemetry",
+      "Sentry",
+      "Docker"
+    ],
+    "githubUrl": "",
+    "liveUrl": "",
+    "images": [
+      "/images/projects/manorcarpets_1.jpg",
+      "/images/projects/manorcarpets_2.png"
+    ],
+    "category": "Full Stack",
+    "featured": true,
+    "date": "2025-01-15"
+  },
+  {
     "id": "Dissertation",
     "title": "Large Language Models in Information Retrieval",
     "description": "Using LLMs in a modular end-to-end Information Retrieval pipeline (rewrite, retrieve, rerank, evaluate) to improve retrieval performance (Normalized Discounted Cumulative Gain, Mean Reciprocal Rank, Recall, Precision).",
-    "technologies": ["Ollama Models", "Llama 3", "Qwen 2.5", "BM25", "Crossencoders", "Sentence Transformers (all-MiniLM-L6-v2)", "Faiss-gpu"],
+    "technologies": [
+      "Ollama Models",
+      "Llama 3",
+      "Qwen 2.5",
+      "BM25",
+      "Crossencoders",
+      "Sentence Transformers (all-MiniLM-L6-v2)",
+      "Faiss-gpu"
+    ],
     "githubUrl": "https://github.com/HaiderWain/llm-ir",
     "liveUrl": "",
     "images": [
@@ -18,7 +53,16 @@
     "id": "Dastgyr",
     "title": "Dastgyr.com",
     "description": "A large-scale B2B e-commerce platform built with NestJS, React.js, PostgreSQL. Built new features from scratch that impacted thousands of users. Migrated core services to a modern microservice architecture, introduced a reward and incentive system that boosted engagement, and improved how sellers and buyers interact with the platform.",
-    "technologies": ["TypeScript", "NestJS", "Next.js", "Kafka", "PostgreSQL", "MongoDB", "Jest", "Microservices"],
+    "technologies": [
+      "TypeScript",
+      "NestJS",
+      "Next.js",
+      "Kafka",
+      "PostgreSQL",
+      "MongoDB",
+      "Jest",
+      "Microservices"
+    ],
     "githubUrl": "",
     "liveUrl": "https://dastgyr.com/",
     "images": [
@@ -33,7 +77,16 @@
     "id": "Kisaan",
     "title": "Kisaan",
     "description": "Agritech platform with financial inclusion to help rural communities. As a Senior Software Engineer, I worked on architectural design, building scalable backend services and modernizing core systems that power features like new user onboarding and order processing. Introduced observability, monitoring, integrating OpenTelemetry and Sentry to collect metrics, track application health.",
-    "technologies": ["TypeScript", "NestJS", "Next.js", "PostgreSQL", "OpenTelemetry", "Sentry", "Docker", "Microservices"],
+    "technologies": [
+      "TypeScript",
+      "NestJS",
+      "Next.js",
+      "PostgreSQL",
+      "OpenTelemetry",
+      "Sentry",
+      "Docker",
+      "Microservices"
+    ],
     "githubUrl": "",
     "liveUrl": "https://kisaangroup.pk/",
     "images": [
@@ -47,7 +100,15 @@
     "id": "GrocerApp",
     "title": "GrocerApp",
     "description": "A local e-commerce platform bult with Node.js, React, PostgreSQL. Revamped the platform’s customer support experience by integrating Zendesk, reducing live chat resolution time by 80%. Built features that enhanced customer engagement and retention, including personalized order recommendations and gamification-driven loyalty elements.",
-    "technologies": ["PHP", "Laravel", "JavaScript,", "Node.js", "React", "PostgreSQL", "AWS S3"],
+    "technologies": [
+      "PHP",
+      "Laravel",
+      "JavaScript,",
+      "Node.js",
+      "React",
+      "PostgreSQL",
+      "AWS S3"
+    ],
     "githubUrl": "",
     "liveUrl": "https://grocerapp.pk/",
     "images": [

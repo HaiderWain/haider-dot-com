@@ -264,14 +264,20 @@ export default function Home() {
                     <ProjectSlideshow images={project.images} title={project.title} />
 
                     {/* Hover Overlay with Action Buttons */}
-                    <div className='absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center'>
+                    <div
+                      className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm ${
+                        theme === 'light'
+                          ? 'bg-gradient-to-br from-gray-900/50 to-gray-800/50'
+                          : 'bg-black/40'
+                      }`}
+                    >
                       <div className='flex space-x-4'>
                         {project.githubUrl && (
                           <a
                             href={project.githubUrl}
                             target='_blank'
                             rel='noopener noreferrer'
-                            className='inline-flex items-center px-6 py-3 bg-primary-400 text-black rounded-lg font-medium hover:bg-primary-500 transition-all duration-300 shadow-lg'
+                            className='inline-flex items-center px-6 py-3 bg-primary-400 text-black rounded-lg font-medium hover:bg-primary-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary-400/50 hover:scale-105'
                           >
                             <Github size={18} className='mr-2' />
                             View Code
@@ -282,7 +288,7 @@ export default function Home() {
                             href={project.liveUrl}
                             target='_blank'
                             rel='noopener noreferrer'
-                            className='inline-flex items-center px-6 py-3 border border-primary-400 text-primary-400 rounded-lg font-medium hover:bg-primary-400 hover:text-black transition-all duration-300 backdrop-blur-sm'
+                            className='inline-flex items-center px-6 py-3 border-2 border-primary-400 text-primary-400 rounded-lg font-medium hover:bg-primary-400 hover:text-black transition-all duration-300 backdrop-blur-sm hover:scale-105'
                           >
                             <ExternalLink size={18} className='mr-2' />
                             View Live

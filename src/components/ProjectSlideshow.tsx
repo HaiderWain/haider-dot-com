@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
+import { useTheme } from '@/contexts/ThemeContext';
 
 interface ProjectSlideshowProps {
   images: string[];
@@ -10,6 +11,7 @@ interface ProjectSlideshowProps {
 }
 
 const ProjectSlideshow = ({ images, title }: ProjectSlideshowProps) => {
+  const { theme } = useTheme();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Auto-advance slideshow every 5 seconds if multiple images
@@ -64,14 +66,22 @@ const ProjectSlideshow = ({ images, title }: ProjectSlideshowProps) => {
           <>
             <button
               onClick={goToPrevious}
-              className='absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 z-10'
+              className={`absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 backdrop-blur-sm ${
+                theme === 'light'
+                  ? 'bg-white/90 hover:bg-white text-gray-900 shadow-lg'
+                  : 'bg-primary-400/90 hover:bg-primary-500 text-white shadow-lg shadow-primary-400/50'
+              }`}
               aria-label='Previous image'
             >
               <ChevronLeft size={24} />
             </button>
             <button
               onClick={goToNext}
-              className='absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 z-10'
+              className={`absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 backdrop-blur-sm ${
+                theme === 'light'
+                  ? 'bg-white/90 hover:bg-white text-gray-900 shadow-lg'
+                  : 'bg-primary-400/90 hover:bg-primary-500 text-white shadow-lg shadow-primary-400/50'
+              }`}
               aria-label='Next image'
             >
               <ChevronRight size={24} />
@@ -81,20 +91,30 @@ const ProjectSlideshow = ({ images, title }: ProjectSlideshowProps) => {
 
         {/* Image counter */}
         {images.length > 1 && (
-          <div className='absolute top-4 right-4 bg-black/60 text-white px-3 py-1 rounded-full text-sm z-10'>
+          <div
+            className={`absolute top-4 right-4 px-3 py-1 rounded-full text-sm z-20 backdrop-blur-sm ${
+              theme === 'light'
+                ? 'bg-white/90 text-gray-900 shadow-lg'
+                : 'bg-primary-400/90 text-white shadow-lg shadow-primary-400/50'
+            }`}
+          >
             {currentIndex + 1} / {images.length}
           </div>
         )}
 
         {/* Dots indicator - floating over the image */}
         {images.length > 1 && (
-          <div className='absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10'>
+          <div className='absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20'>
             {images.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`h-2 rounded-full transition-all duration-300 ${
-                  index === currentIndex ? 'bg-primary-400 w-8' : 'bg-white/60 hover:bg-white/80 w-2'
+                  index === currentIndex
+                    ? 'bg-primary-400 w-8 shadow-lg shadow-primary-400/50'
+                    : theme === 'light'
+                      ? 'bg-gray-900/60 hover:bg-gray-900/80 w-2'
+                      : 'bg-white/80 hover:bg-white w-2'
                 }`}
                 aria-label={`Go to image ${index + 1}`}
               />
