@@ -1,7 +1,11 @@
 'use client';
 
 import { X, Download, Eye } from 'lucide-react';
-import Image from 'next/image';
+import { useEffect, useState } from 'react';
+
+const RESUME_PDF = '/resume.pdf';
+/** Chrome’s PDF viewer: cleaner chrome; still scrolls for multi-page PDFs */
+const PDF_EMBED = `${RESUME_PDF}#toolbar=0&navpanes=0`;
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -9,43 +13,56 @@ interface ResumeModalProps {
 }
 
 const ResumeModal = ({ isOpen, onClose }: ResumeModalProps) => {
+  const [previewReady, setPreviewReady] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) setPreviewReady(false);
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const handleDownload = async () => {
     try {
-      // Fetch the PDF file
-      const response = await fetch('/resume.pdf');
+      const response = await fetch(RESUME_PDF);
       const blob = await response.blob();
-
-      // Create download link
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
       link.download = 'Haider_Wain_Resume.pdf';
-
-      // Trigger download
       document.body.appendChild(link);
       link.click();
-
-      // Cleanup
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error('Error downloading resume:', error);
-      // Fallback: open in new tab
-      window.open('/resume.pdf', '_blank');
+      window.open(RESUME_PDF, '_blank');
     }
   };
 
   return (
     <div
+      role='dialog'
+      aria-modal='true'
+      aria-labelledby='resume-modal-title'
       className='fixed inset-0 bg-black/60 backdrop-blur-md z-50 flex items-center justify-center p-4 pt-24'
       onClick={onClose}
     >
-      {/* Simple floating modal - just the image */}
-      <div className='relative' onClick={e => e.stopPropagation()}>
-        {/* Close button */}
+      <div className='sr-only' id='resume-modal-title'>
+        Resume preview
+      </div>
+
+      <div className='relative w-full max-w-[min(90vw,52rem)] flex flex-col' onClick={e => e.stopPropagation()}>
         <button
+          type='button'
           onClick={onClose}
           className='absolute -top-4 -right-4 z-20 w-14 h-14 bg-white hover:bg-gray-50 border-2 border-gray-200 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110'
           aria-label='Close resume modal'
@@ -53,30 +70,39 @@ const ResumeModal = ({ isOpen, onClose }: ResumeModalProps) => {
           <X size={24} className='text-gray-700' />
         </button>
 
-        {/* Just the resume image - no containers, no padding, no white backgrounds */}
-        <Image
-          src='/resume.webp'
-          alt='Haider Wain Resume'
-          className='rounded-2xl shadow-2xl'
+        <div
+          className='relative w-full overflow-hidden rounded-2xl bg-neutral-200/80 shadow-2xl ring-1 ring-black/5'
           style={{
-            maxHeight: 'calc(100vh - 200px)', // Account for nav bar, padding, and buttons
-            maxWidth: '90vw',
-            width: 'auto',
-            height: 'auto',
+            height: 'min(75vh, calc(100vh - 14rem))',
+            minHeight: 'min(24rem, 50vh)',
           }}
-          onError={e => {
-            const target = e.target as HTMLImageElement;
-            target.src =
-              'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDQwMCA1MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iNTAwIiBmaWxsPSIjRjNGNEY2Ii8+Cjx0ZXh0IHg9IjIwMCIgeT0iMjUwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM2QjcyODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkltYWdlIG5vdCBmb3VuZDwvdGV4dD4KPC9zdmc+';
-          }}
-          width={2550}
-          height={3330}
-          priority
-        />
+        >
+          {!previewReady && (
+            <div
+              className='absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-neutral-100'
+              aria-busy='true'
+              aria-label='Loading resume preview'
+            >
+              <div className='h-9 w-9 rounded-full border-2 border-primary-400 border-t-transparent animate-spin' />
+              <p className='text-sm text-neutral-600'>Loading preview…</p>
+            </div>
+          )}
+          <iframe
+            title='Haider Wain resume PDF preview'
+            src={PDF_EMBED}
+            className='absolute inset-0 h-full w-full border-0 bg-white transition-opacity duration-200'
+            style={{ opacity: previewReady ? 1 : 0 }}
+            onLoad={() => setPreviewReady(true)}
+          />
+        </div>
 
-        {/* Action buttons - floating below the resume */}
-        <div className='mt-6 flex flex-col sm:flex-row gap-4 justify-center items-center'>
+        <p className='mt-2 text-center text-xs text-white/70'>
+          Scroll inside the preview to see all pages · Esc to close
+        </p>
+
+        <div className='mt-4 flex flex-col sm:flex-row gap-4 justify-center items-center'>
           <button
+            type='button'
             onClick={handleDownload}
             className='group inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary-400 to-primary-500 text-black rounded-xl font-semibold hover:from-primary-500 hover:to-primary-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary-400/25 hover:scale-105'
           >
@@ -85,7 +111,7 @@ const ResumeModal = ({ isOpen, onClose }: ResumeModalProps) => {
           </button>
 
           <a
-            href='/resume.pdf'
+            href={RESUME_PDF}
             target='_blank'
             rel='noopener noreferrer'
             className='group inline-flex items-center px-6 py-3 border-2 border-primary-400 text-primary-400 rounded-xl font-semibold hover:bg-primary-400 hover:text-black transition-all duration-300 hover:scale-105'
